@@ -16,6 +16,7 @@ palavras = [
 
 # Escolhe uma palavra aleatoriamente da lista
 termo = random.choice(palavras).upper()
+letras_erradas = []
 game_over = False
 chances = 6
 
@@ -45,6 +46,9 @@ while not game_over:
     else:
         i = 0
         for c in chute:
+            if c not in termo and c not in letras_erradas:
+                letras_erradas.append(c)
+
             display.append(c)
             #se o caracter não existe no termo
             if c not in termo:
@@ -62,3 +66,4 @@ while not game_over:
         for c in display:
             print(c, end='')
         print("\n")
+        print("\nLetras erradas digitadas até agora:", ", ".join(letras_erradas))
